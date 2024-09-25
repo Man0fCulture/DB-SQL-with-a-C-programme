@@ -2,9 +2,11 @@ CC ?= gcc
 
 CFLAGS	+=	-std=gnu17 -Wall -Wextra -Werror
 
-SRC = Test_1.c
+SRC = 	src/main.c	\
+		src/repl.c	\
+		src/btree.c
 
-NAME	=	exo
+NAME	=	Btree
 
 all: $(NAME)
 
