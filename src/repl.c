@@ -3,9 +3,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-
-
-
 typedef enum {
   META_COMMAND_SUCCESS,
   META_COMMAND_UNRECOGNIZED_COMMAND
