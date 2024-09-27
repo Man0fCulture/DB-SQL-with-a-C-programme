@@ -33,6 +33,7 @@ static int find_to_stock(btree_t *curr, char *data)
             if (curr->left == NULL) {
                 return ERROR;
             }
+            curr->stock = right_s;
             return SUCCES;
         }
         if (find_to_stock(curr->left, data) == 84)
@@ -44,6 +45,7 @@ static int find_to_stock(btree_t *curr, char *data)
             if (curr->right == NULL) {
                 return ERROR;
             }
+            curr->stock = left_s;
             return SUCCES;
         }
         if (find_to_stock(curr->right, data) == 84)
@@ -76,9 +78,11 @@ int main(int ac, char **argv)
     create_node(&tree, "Test01");
     printf("%s\n", tree->data);
     create_node(&tree, "Test02");
-    printf("%s\n", tree->right->data);
-    create_node(&tree, "Test03");
     printf("%s\n", tree->left->data);
+    create_node(&tree, "Test03");
+    printf("%s\n", tree->right->data);
+    create_node(&tree, "Test04");
+    printf("%s\n", tree->left->left->data);
 
     return SUCCES;
 }
