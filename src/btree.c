@@ -9,17 +9,18 @@ static btree_t *add_node(char *data)
 {
     btree_t *new_node = malloc(sizeof(btree_t));
     int8_t i = 0;
-    new_node->data = malloc(sizeof(char) * (strlen(data) + 1));
+    new_node->name_table = malloc(sizeof(char) * (strlen(data) + 1));
     if (new_node == NULL) {
         return NULL;
     }
     for (; data[i] != 0; i++) {
-        new_node->data[i] = data[i];
+        new_node->name_table[i] = data[i];
     }
-    new_node->data[i] = 0;
+    new_node->name_table[i] = 0;
     new_node->left = NULL;
     new_node->right = NULL;
     new_node->curr = NULL;
+    new_node->C = NULL;
     new_node->stock = left_s;
 
     return new_node;
@@ -76,13 +77,13 @@ int main(int ac, char **argv)
     btree_t *tree = NULL;
 
     create_node(&tree, "Test01");
-    printf("%s\n", tree->data);
+    printf("%s\n", tree->name_table);
     create_node(&tree, "Test02");
-    printf("%s\n", tree->left->data);
+    printf("%s\n", tree->left->name_table);
     create_node(&tree, "Test03");
-    printf("%s\n", tree->right->data);
+    printf("%s\n", tree->right->name_table);
     create_node(&tree, "Test04");
-    printf("%s\n", tree->left->left->data);
+    printf("%s\n", tree->left->left->name_table);
 
     return SUCCES;
 }

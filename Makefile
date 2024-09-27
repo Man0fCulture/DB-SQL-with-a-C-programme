@@ -4,7 +4,8 @@ CFLAGS	+=	-std=gnu17 -Wall -Wextra -Werror -Iinclude
 
 SRC = 	src/main.c	\
 		src/repl.c	\
-		src/btree.c
+		src/btree.c	\
+		src/tables.c
 
 NAME	=	Btree
 
