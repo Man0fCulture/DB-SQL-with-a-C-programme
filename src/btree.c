@@ -7,15 +7,16 @@
 
 static btree_t *add_node(char *data)
 {
-    btree_t *new_node = malloc(sizeof(char) * strlen(data) + 1);
+    btree_t *new_node = malloc(sizeof(btree_t));
     int8_t i = 0;
+    new_node->data = malloc(sizeof(char) * (strlen(data) + 1));
     if (new_node == NULL) {
         return NULL;
     }
     for (; data[i] != 0; i++) {
         new_node->data[i] = data[i];
     }
-    data[i] = 0;
+    new_node->data[i] = 0;
     new_node->left = NULL;
     new_node->right = NULL;
     new_node->curr = NULL;
@@ -64,5 +65,20 @@ int create_node(btree_t **tree, char *data)
         printf("Error of malloc\n");
         return ERROR;
     }
+    return SUCCES;
+}
+
+
+int main(int ac, char **argv)
+{
+    btree_t *tree = NULL;
+
+    create_node(&tree, "Test01");
+    printf("%s\n", tree->data);
+    create_node(&tree, "Test02");
+    printf("%s\n", tree->right->data);
+    create_node(&tree, "Test03");
+    printf("%s\n", tree->left->data);
+
     return SUCCES;
 }
