@@ -84,6 +84,8 @@ int main(int ac, char **argv)
     printf("%s\n", tree->right->name_table);
     create_node(&tree, "Test04");
     printf("%s\n", tree->left->left->name_table);
-
+    create_node(&tree, "Test05");
+    printf("%s\n", tree->right->left->name_table);
+    
     return SUCCES;
 }
