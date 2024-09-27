@@ -1,6 +1,7 @@
 #include "btree.h"
 #include "define.h"
 #include <string.h>
+#include <stdio.h>
 
 
 btree_t *search(btree_t *tree, char *table_name)
@@ -12,8 +13,7 @@ btree_t *search(btree_t *tree, char *table_name)
     if (curr == NULL) {
         return NULL;
     }
-
-    while (count > 2) {
+    while (count < 2) {
         if (strcmp(table_name, curr->name_table) == 0) {
             return curr;
         }

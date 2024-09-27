@@ -1,5 +1,6 @@
 #include "btree.h"
 #include "define.h"
+#include "search.c"
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
@@ -9,10 +10,11 @@ static btree_t *add_node(char *data)
 {
     btree_t *new_node = malloc(sizeof(btree_t));
     int8_t i = 0;
-    new_node->name_table = malloc(sizeof(char) * (strlen(data) + 1));
+
     if (new_node == NULL) {
         return NULL;
     }
+    new_node->name_table = malloc(sizeof(char) * (strlen(data) + 1));
     for (; data[i] != 0; i++) {
         new_node->name_table[i] = data[i];
     }
@@ -86,6 +88,9 @@ int main(int ac, char **argv)
     printf("%s\n", tree->left->left->name_table);
     create_node(&tree, "Test05");
     printf("%s\n", tree->right->left->name_table);
-    
+    btree_t *curr = search(tree, "Test02");
+
+    printf("search = %s\n", curr->name_table);
+
     return SUCCES;
 }
